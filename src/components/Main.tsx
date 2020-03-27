@@ -21,9 +21,11 @@ class Main extends Component<Props, State> {
         this.state = {
             error: false,
             list: []
-        }
+        } 
+    }
 
-        this.updateAllCandidates(); 
+    componentDidMount() {
+        this.updateAllCandidates();
     }
 
     startGame = () => {
@@ -36,6 +38,7 @@ class Main extends Component<Props, State> {
 
     castVoteForCandidate = (id: string) => {
         const vote = { id: id };
+        console.log(vote);
         API.graphql(graphqlOperation(castVote, { input: vote }));
     }
 
